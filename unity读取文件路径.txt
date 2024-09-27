@@ -1,0 +1,61 @@
+
+
+Resources       
+               在Unity下对应为：/Assets/Resources
+Application.dataPath
+	在Unity下对应为：/Assets
+Application.streamingAssetsPath
+	在Unity下对应为：/Assets/StreamingAssets
+Application.persistentDataPath
+	在Unity下对应为：/该Unity项目文件夹路径
+Application.temporaryCachePath
+	在Unity下对应为：/该Unity项目文件夹路径
+
+
+ptah =  Application.streamingAssetsPath + "/TextRead.txt";    斜杠
+    --如："G:/智能制造/wlsx/demo/demo_textures/extern_resource/教学资源"
+ptah =  Application.streamingAssetsPath + "\\TextRead.txt";   反斜杠
+    --如："G:\\智能制造\\wlsx\\demo\\demo_textures\\extern_resource\\教学资源"
+path = @  \       开头加了@，就使用一个反斜杠
+    --如：@"G:\智能制造\wlsx\demo\demo_textures\extern_resource\教学资源"
+通过Resources文件  
+T t = (T)Resources.Load(FileName);
+T t = Resources.Load(FileName) as T;
+T t = Resources.Load<T>(FileName);
+
+
+1、TextAsset    读取的文本格式
+    加载文本）
+    TextAsset text = Resources.Load("") as TextAsset;
+    加载对象）
+    GameObject prefab=Resources.Load<GameObject>("xxx")；
+
+2、通过IO读取和写入  
+     读取内容）
+     string str =  File.ReadAllText(path)      全部读写   
+     string[ ] str =  File.ReadAllLines(path)     一行行全部读写
+     写入内容）
+     File.WriteAllText(path，string str)        单个字符串     默认会覆盖之前的内容
+     File.AppendAllText(Path, string str+Environment.NewLine)      不会覆盖直接的内容，会追加写入并分行
+     File.WriteAllLine(path，string[ ] strs)    字符串数组
+
+3、FileStream           适用于处理<<二进制文件或非文本文件(图片或视频)>>      字节流形式(只能操作字节)
+     FileStream fileStream = new FileStream(path，FileMode.    ，FileAccess.    );
+     byte[ ] bytes = new byte[fileStream.Length];
+     fileStream.Read(bytes，0，(int)fileStream.Length)；
+     fileStream.Dispose();
+	
+     读取）
+     fileStream.ReadLine    解码）string content=System.Text.Encoding.UTF8.GetString(bytes);
+     写入）
+     fileStream.Write	       转码）bytes=System.Text.Encoding.Default.GetBytes(content1);
+
+4、StreamReader      适用于处理<<文本文件>>                    字符流形式
+     读取内容）
+     streamReader sr = new streamReader(Path)
+     string str = sr.ReadToEnd()
+     string str = sr.ReadLine()
+     写入内容）
+     streamWriter sw = new streamWrite(path,false)   false覆盖写入(默认)   true追加写入
+     sw.WriteLine(str)    
+     sw.Write(str)  / sw.Write(str[ ])  / sw.Write(str[ ] ,StartIndex ,Length)  
