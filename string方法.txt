@@ -1,0 +1,38 @@
+富文本（直接用在inspctor窗口的文字输入框里）
+<color=red>提示</color>
+<color=red>红色提示</color>
+<size=18>提示</size>
+<color=red><size=18>红色提示</size></color>
+
+
+1、插入——Insert
+     Insert（int startIndex,string value）
+2、移除——Remove
+    Remove(int startIndex)从字符串的指定索引位置开始删除之后所有的字符
+    Remove(int startIndex，int count)在指定索引位置开始删除之后的指定字符数量
+3、替换——Replace
+    Replace（Old value,new value）
+4、截取——Substring
+    Substring（int index）
+    Substring（int index，int count）
+5、去除首尾空格
+    Trim（）
+6、按符号分割字符
+    Split（","）
+7、字符串比较
+    Equals（string s2）
+    Compare（str1，str2）
+8、连接字符串
+    Concat（str1，str2）
+9、大小写
+    ToLower（）转小写
+    ToUpper（）转大写
+10、判断字符串是否为空或null
+     if（string.IsNullOrEmpty（str））
+11、拼接字符串
+     string myName="Unity";
+     string myAge="30";
+   1、插值字符串： string result = $"我是{myName}我今年{myAge}岁";
+   2、使用+号：     string result = "我是"+myName+"我今年"+myAge+"岁了";
+   3、使用format：string result = string.Format("我是{0},我今年{1}岁,"AAA",18);
+   
