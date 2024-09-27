@@ -1,0 +1,12 @@
+  public float clickIntreval = 0.3f;
+  private float lastClickTime;
+
+public void OnpointerClick(PointerEventData eventData)
+{
+   float timeSinceLastClick = Time.time - lastClickTime;
+if( timeSinceLastClick<=clickInterval)
+   {
+     Debug.Log("已双击");
+    }
+lastClickTime=Time.time;
+}
